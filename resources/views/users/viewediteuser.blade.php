@@ -40,10 +40,6 @@
                             <h1>Editar  Usuario</h1>
                         </div>
                         <div class="col-md-4 mb-3 mx-auto">
-                            <label>Nombre</label>
-                            <input type="text" class="form-control" name="name">
-                        </div>
-                        <div class="col-md-4 mb-3 mx-auto">
                             <label>Email</label>
                             <input type="email" class="form-control" name="email">
                         </div>
