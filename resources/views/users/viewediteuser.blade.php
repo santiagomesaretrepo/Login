@@ -32,7 +32,7 @@
       @endif
    <div class="card">
      <!--Funcion para para consumir el api -->
-        <form action="{{route('newuser')}}" method="GET"> 
+        <form action="{{route('editlogin')}}" method="GET"> 
         @csrf
             <div class="card-body text-center">
                 <div class="form-row">
