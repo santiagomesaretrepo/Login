@@ -19,7 +19,7 @@
                                 @csrf
                                     <div class="col-md-4 mb-3 mx-auto">
                                         <button type="submit" class="btn btn-secondary">Editar Usuario</button>
-                                        <input type="text" value="$obteneremail->name">
+                                        <input type="hidden" value="{{$obteneremail->name}}" name="name">
                                     </div>
                                 </form>
                             <br>

@@ -46,8 +46,9 @@ class Usercontroller extends Controller
         return view('users.viewnewuser'); 
     }
     //vista para para la creacion de un nuevo usuario 
-    public function indexViewEditeuser(){
-        return view('users.viewediteuser'); 
+    public function indexViewEditeuser(Request $request){
+       $nombre_usuario= $request->name;
+        return view('users.viewediteuser',compact('nombre_usuario')); 
     }
     //vista para para luego de loguerase
     public function indexViewUserlogueo(){
@@ -110,22 +111,13 @@ class Usercontroller extends Controller
             'email'=>'required',
             'password'=>'required',
         ]);
-        //verificamos el email si exite  para validar su contraseña con la que esta ingresando
-        $validarususrios=User::where('email', '=', $request->email )
-        ->get();
-        if (count($validarususrios)>= 1) {
-            $obteneremail=User::where('email', '=', $request->email )
-            ->first();
-            $validar_clave=Hash::check($request->password, $obteneremail->password);
-            //validar mostrar mensaje de que te debes registrar o mostrar pantalla luego de loguiarte 
-            if ( $validar_clave>= 1) {
-                return view('users.viewlogin',compact('obteneremail')); 
-            } else {
-                return back()->with('mensaje','El email o contraseña No Existen Registrate'); 
-            }
-        } else {
-            return back()->with('mensaje','El email o contraseña No Existen Registrate'); 
-        }
-
+        //consultamos el usuario para editarlo
+        $udateuser=User::where('name', '=', $request->name)
+        ->first();
+        echo $request->name;
+         $udateuser->email=$request->email;
+        $udateuser->password= Hash::make($request->password);
+        $udateuser->save(); 
+        return back()->with('mensaje','ACTUALIZACIÓN EXITOSO'); 
     }
 }

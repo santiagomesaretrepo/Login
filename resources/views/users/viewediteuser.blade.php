@@ -38,6 +38,9 @@
                 <div class="form-row">
                         <div class="col-md-4 mb-3 mx-auto">
                             <h1>Editar  Usuario</h1>
+                            <br>
+                            <h2>{{$nombre_usuario}}</h2>
+                            <input type="text" value="{{$nombre_usuario}}" name="name">
                         </div>
                         <div class="col-md-4 mb-3 mx-auto">
                             <label>Email</label>
